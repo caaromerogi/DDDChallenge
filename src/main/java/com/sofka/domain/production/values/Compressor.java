@@ -1,17 +1,16 @@
-package com.sofka.domain.song.values;
+package com.sofka.domain.production.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Name implements ValueObject<String> {
-
+public class Compressor implements ValueObject<String> {
     private final String value;
 
-    public Name(String value) {
+    public Compressor(String value) {
         this.value = Objects.requireNonNull(value);
         if(this.value.isBlank()){
-            throw new IllegalArgumentException("The VO name can't be blank");
+            throw new IllegalArgumentException("The VO compressor can't be blank");
         }
     }
 
@@ -24,7 +23,7 @@ public class Name implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Name that = (Name) o;
+        Compressor that = (Compressor) o;
         return Objects.equals(value, that.value);
     }
 
