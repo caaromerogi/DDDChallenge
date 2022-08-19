@@ -10,7 +10,7 @@ public class VocalRegisterUpdated extends DomainEvent {
 
 
     public VocalRegisterUpdated(SingerId singerId, VocalRegister vocalRegister) {
-        super("com.sofka.dddchallenge.VocalRegisterUpdated");
+        super("com.sofka.dddchallenge.Song.VocalRegisterUpdated");
         this.singerId = singerId;
         this.vocalRegister = vocalRegister;
     }

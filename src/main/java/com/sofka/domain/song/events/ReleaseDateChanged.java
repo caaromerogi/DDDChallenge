@@ -8,7 +8,7 @@ public class ReleaseDateChanged extends DomainEvent {
 
 
     public ReleaseDateChanged(ReleaseDate releaseDate) {
-        super("com.sofka.dddchallenge.ReleaseDateChanged");
+        super("com.sofka.dddchallenge.Song.ReleaseDateChanged");
         this.releaseDate = releaseDate;
     }
 

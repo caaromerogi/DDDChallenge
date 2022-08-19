@@ -7,7 +7,7 @@ public class TitleChanged extends DomainEvent {
     private final Title title;
 
     public TitleChanged(Title title) {
-        super("com.sofka.dddchallenge.TitleChanged");
+        super("com.sofka.dddchallenge.Song.TitleChanged");
         this.title = title;
     }
 

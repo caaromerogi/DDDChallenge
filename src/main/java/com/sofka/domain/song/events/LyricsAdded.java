@@ -11,7 +11,7 @@ public class LyricsAdded extends DomainEvent {
     private final Verse verse;
 
     public LyricsAdded(LyricsId lyricsId, Chorus chorus, Verse verse) {
-        super("com.sofka.dddchallenge.LyricsAdded");
+        super("com.sofka.dddchallenge.Song.LyricsAdded");
         this.lyricsId = lyricsId;
         this.chorus = chorus;
         this.verse = verse;

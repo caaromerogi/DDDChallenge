@@ -9,7 +9,7 @@ public class SongCreated extends DomainEvent {
     private final ReleaseDate releaseDate;
 
     public SongCreated(Title title, ReleaseDate releaseDate) {
-        super("com.sofka.dddchallenge.SongCreated");
+        super("com.sofka.dddchallenge.Song.SongCreated");
         this.title = title;
         this.releaseDate = releaseDate;
     }

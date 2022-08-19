@@ -10,7 +10,7 @@ public class MelodicInstrumentChanged extends DomainEvent {
 
 
     public MelodicInstrumentChanged(InstrumentalId instrumentalId, MelodicInstrument melodicInstrument) {
-        super("com.sofka.dddchallenge.MelodicInstrumentChanged");
+        super("com.sofka.dddchallenge.Song.MelodicInstrumentChanged");
         this.instrumentalId = instrumentalId;
         this.melodicInstrument = melodicInstrument;
     }

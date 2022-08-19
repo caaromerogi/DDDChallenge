@@ -10,7 +10,7 @@ public class PercussionInstrumentChanged extends DomainEvent {
 
 
     public PercussionInstrumentChanged(InstrumentalId instrumentalId, PercussionInstrument percussionInstrument) {
-        super("com.sofka.dddchallenge.PercussionInstrumentChanged");
+        super("com.sofka.dddchallenge.Song.PercussionInstrumentChanged");
         this.instrumentalId = instrumentalId;
         this.percussionInstrument = percussionInstrument;
     }

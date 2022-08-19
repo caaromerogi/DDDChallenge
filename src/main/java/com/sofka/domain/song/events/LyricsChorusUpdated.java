@@ -10,7 +10,7 @@ public class LyricsChorusUpdated extends DomainEvent {
 
 
     public LyricsChorusUpdated(LyricsId lyricsId, Chorus chorus) {
-        super("com.sofka.dddchallenge.LyricsChorusUpdated");
+        super("com.sofka.dddchallenge.Song.LyricsChorusUpdated");
         this.lyricsId = lyricsId;
         this.chorus = chorus;
     }
