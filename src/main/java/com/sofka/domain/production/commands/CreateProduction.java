@@ -16,4 +16,6 @@ public class CreateProduction extends Command {
     public SongId getSongId() {
         return songId;
     }
+
+    public ProductionId getProductionId(){return productionId;}
 }

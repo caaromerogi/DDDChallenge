@@ -17,4 +17,16 @@ public class MasterizerAdded extends DomainEvent {
         this.equalizer = equalizer;
         this.compressor = compressor;
     }
+
+    public MasterizerId getMasterizerId() {
+        return masterizerId;
+    }
+
+    public Equalizer getEqualizer() {
+        return equalizer;
+    }
+
+    public Compressor getCompressor() {
+        return compressor;
+    }
 }

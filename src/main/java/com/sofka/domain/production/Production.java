@@ -16,6 +16,7 @@ public class Production extends AggregateEvent<ProductionId> {
 
     protected SongId songId;
     protected Masterizer masterizer;
+    protected Recorder recorder;
     protected Producer producer;
 
     public Production(ProductionId entityId, SongId songId) {
@@ -92,5 +93,19 @@ public class Production extends AggregateEvent<ProductionId> {
         appendChange(new CompressorChanged(masterizerId, compressor));
     }
 
+    public SongId songId() {
+        return songId;
+    }
 
+    public Masterizer masterizer() {
+        return masterizer;
+    }
+
+    public Recorder recorder() {
+        return recorder;
+    }
+
+    public Producer producer() {
+        return producer;
+    }
 }
