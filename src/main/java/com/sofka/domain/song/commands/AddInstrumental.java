@@ -1,10 +1,7 @@
 package com.sofka.domain.song.commands;
 
 import co.com.sofka.domain.generic.Command;
-import com.sofka.domain.song.values.InstrumentalId;
-import com.sofka.domain.song.values.MelodicInstrument;
-import com.sofka.domain.song.values.PercussionInstrument;
-import com.sofka.domain.song.values.SongId;
+import com.sofka.domain.song.values.*;
 
 public class AddInstrumental extends Command {
 
@@ -16,11 +13,17 @@ public class AddInstrumental extends Command {
 
     private final MelodicInstrument melodicInstrument;
 
-    public AddInstrumental(SongId songId, InstrumentalId instrumentalId, PercussionInstrument percussionInstrument, MelodicInstrument melodicInstrument) {
+    private final IsRecorded isRecorded;
+
+    public AddInstrumental(SongId songId, InstrumentalId instrumentalId,
+                           PercussionInstrument percussionInstrument,
+                           MelodicInstrument melodicInstrument,
+                           IsRecorded isRecorded) {
         this.songId = songId;
         this.instrumentalId = instrumentalId;
         this.percussionInstrument = percussionInstrument;
         this.melodicInstrument = melodicInstrument;
+        this.isRecorded = isRecorded;
     }
 
     public SongId getSongId() {
@@ -37,5 +40,9 @@ public class AddInstrumental extends Command {
 
     public MelodicInstrument getMelodicInstrument() {
         return melodicInstrument;
+    }
+
+    public IsRecorded getIsRecorded() {
+        return isRecorded;
     }
 }

@@ -2,18 +2,19 @@ package com.sofka.domain.song.commands;
 
 import co.com.sofka.domain.generic.Command;
 import com.sofka.domain.song.values.InstrumentalId;
+import com.sofka.domain.song.values.MelodicInstrument;
 import com.sofka.domain.song.values.SongId;
 
 public class ChangeMelodicInstrument extends Command {
     private final SongId songId;
     private final InstrumentalId instrumentalId;
-    private final ChangeMelodicInstrument changeMelodicInstrumentalId;
+    private final MelodicInstrument melodicInstrument;
 
 
-    public ChangeMelodicInstrument(SongId songId, InstrumentalId instrumentalId, ChangeMelodicInstrument changeMelodicInstrumentalId) {
+    public ChangeMelodicInstrument(SongId songId, InstrumentalId instrumentalId, MelodicInstrument melodicInstrument) {
         this.songId = songId;
         this.instrumentalId = instrumentalId;
-        this.changeMelodicInstrumentalId = changeMelodicInstrumentalId;
+        this.melodicInstrument = melodicInstrument;
     }
 
     public SongId getSongId() {
@@ -24,7 +25,7 @@ public class ChangeMelodicInstrument extends Command {
         return instrumentalId;
     }
 
-    public ChangeMelodicInstrument getChangeMelodicInstrumentalId() {
-        return changeMelodicInstrumentalId;
+    public MelodicInstrument getMelodicInstrument() {
+        return melodicInstrument;
     }
 }

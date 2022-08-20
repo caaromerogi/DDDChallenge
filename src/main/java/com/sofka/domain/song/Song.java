@@ -8,8 +8,6 @@ import com.sofka.domain.song.values.*;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
 
 public class Song extends AggregateEvent<SongId> {
     protected ReleaseDate releaseDate;
@@ -18,9 +16,11 @@ public class Song extends AggregateEvent<SongId> {
     protected Instrumental instrumental;
     protected Lyrics lyrics;
 
-    public Song(SongId entityId, ReleaseDate releaseDate, Title title) {
+    protected IsRecorded isRecorded;
+
+    public Song(SongId entityId, ReleaseDate releaseDate, Title title, IsRecorded isRecorded) {
         super(entityId);
-        appendChange(new SongCreated(title, releaseDate)).apply();
+        appendChange(new SongCreated(title, releaseDate, isRecorded)).apply();
     }
 
     private Song(SongId songId) {
@@ -45,19 +45,21 @@ public class Song extends AggregateEvent<SongId> {
         appendChange(new ReleaseDateChanged(releaseDate)).apply();
     }
 
-    public void addSinger(SingerId singerId, Name name, VocalRegister vocalRegister) {
+    public void addSinger(SingerId singerId, Name name, VocalRegister vocalRegister, IsRecorded isRecorded) {
         Objects.requireNonNull(singerId);
         Objects.requireNonNull(name);
         Objects.requireNonNull(vocalRegister);
-        appendChange(new SingerAdded(singerId, name, vocalRegister));
+        Objects.requireNonNull(isRecorded);
+        appendChange(new SingerAdded(singerId, name, vocalRegister, isRecorded));
     }
 
     public void addInstrumental(InstrumentalId instrumentalId, PercussionInstrument percussionInstrument,
-                                MelodicInstrument melodicInstrument) {
+                                MelodicInstrument melodicInstrument, IsRecorded isRecorded) {
         Objects.requireNonNull(instrumentalId);
         Objects.requireNonNull(percussionInstrument);
         Objects.requireNonNull(melodicInstrument);
-        appendChange(new InstrumentalAdded(instrumentalId, percussionInstrument, melodicInstrument)).apply();
+        Objects.requireNonNull(isRecorded);
+        appendChange(new InstrumentalAdded(instrumentalId, percussionInstrument, melodicInstrument, isRecorded)).apply();
     }
 
     public void addLyrics(LyricsId lyricsId, Chorus chorus, Verse verse) {
@@ -103,6 +105,24 @@ public class Song extends AggregateEvent<SongId> {
         appendChange(new LyricsVerseUpdated(lyricsId, verse)).apply();
     }
 
+    public void changeInstrumentalIsRecorded(InstrumentalId instrumentalId, IsRecorded isRecorded){
+        Objects.requireNonNull(instrumentalId);
+        Objects.requireNonNull(isRecorded);
+        appendChange((new InstrumentalIsRecordedChanged(instrumentalId, isRecorded)));
+    }
+    public void changeSingerIsRecorded(SingerId singerId, IsRecorded isRecorded){
+        Objects.requireNonNull(singerId);
+        Objects.requireNonNull(isRecorded);
+        appendChange(new SingerIsRecordedChanged(singerId, isRecorded));
+    }
+
+    public void changeIsRecorded(IsRecorded isRecorded){
+        Objects.requireNonNull(isRecorded);
+        appendChange(new SongIsRecordedChanged(isRecorded));
+    }
+
+
+
     public ReleaseDate releaseDate() {
         return releaseDate;
     }
@@ -121,5 +141,8 @@ public class Song extends AggregateEvent<SongId> {
 
     public Lyrics lyrics() {
         return lyrics;
+    }
+    public IsRecorded isRecorded(){
+        return isRecorded;
     }
 }

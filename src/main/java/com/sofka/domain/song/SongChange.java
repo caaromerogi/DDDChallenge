@@ -13,9 +13,9 @@ public class SongChange extends EventChange {
             song.title = event.getTitle();
         });
 
-        apply((SingerAdded event) -> song.singer = new Singer(event.getSingerId(), event.getName(),event.getVocalRegister()));
+        apply((SingerAdded event) -> song.singer = new Singer(event.getSingerId(), event.getName(),event.getVocalRegister(), event.getIsRecorded()));
 
-        apply((InstrumentalAdded event) -> song.instrumental = new Instrumental(event.getInstrumentalId(), event.getPercussionInstrument(), event.getMelodicInstrumental()));
+        apply((InstrumentalAdded event) -> song.instrumental = new Instrumental(event.getInstrumentalId(), event.getPercussionInstrument(), event.getMelodicInstrumental(), event.getIsRecorded()));
 
         apply((LyricsAdded event) -> song.lyrics = new Lyrics(event.getLyricsId(), event.getChorus(), event.getVerse()));}
 }

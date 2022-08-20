@@ -41,12 +41,13 @@ class AddRecorderUseCaseTest {
         var events = UseCaseHandler
                 .getInstance()
                 .syncExecutor(useCase, new RequestCommand<>(command))
-                .orElseThrow(()->new IllegalArgumentException("Something went wrong adding singer"))
+                .orElseThrow(()->new IllegalArgumentException("Something went wrong adding recorder"))
                 .getDomainEvents();
 
         var event = (RecorderAdded)events.get(0);
         Assertions.assertEquals(command.getVolume().value(), event.getVolume().value());
         Assertions.assertEquals(command.getBrand().value(), event.getBrand().value());
+        Mockito.verify(repository).getEventsBy(ROOT_ID);
 
     }
 }

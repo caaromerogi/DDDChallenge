@@ -10,7 +10,7 @@ public class CreateSongUseCase extends UseCase<RequestCommand<CreateSong>, Respo
     @Override
     public void executeUseCase(RequestCommand<CreateSong> createSongRequestCommand) {
         CreateSong createSong = createSongRequestCommand.getCommand();
-        Song song = new Song(createSong.getSongId(), createSong.getReleaseDate(), createSong.getTitle());
+        Song song = new Song(createSong.getSongId(), createSong.getReleaseDate(), createSong.getTitle(), createSong.getIsRecorded());
         emit().onResponse(new ResponseEvents(song.getUncommittedChanges()));
     }
 }

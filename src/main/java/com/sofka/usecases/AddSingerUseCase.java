@@ -11,7 +11,7 @@ public class AddSingerUseCase extends UseCase<RequestCommand<AddSinger>, Respons
     public void executeUseCase(RequestCommand<AddSinger> addSingerRequestCommand) {
         var command = addSingerRequestCommand.getCommand();
         var song = Song.from(command.getSongId(), retrieveEvents(command.getSongId().value()));
-        song.addSinger(command.getSingerId(), command.getName(), command.getVocalRegister());
+        song.addSinger(command.getSingerId(), command.getName(), command.getVocalRegister(), command.getIsRecorded());
 
         emit().onResponse(new ResponseEvents(song.getUncommittedChanges()));
     }

@@ -1,4 +1,19 @@
 package com.sofka.usecases;
 
-public class AddInstrumentalUseCase {
+import co.com.sofka.business.generic.UseCase;
+import co.com.sofka.business.support.RequestCommand;
+import co.com.sofka.business.support.ResponseEvents;
+import com.sofka.domain.song.Song;
+import com.sofka.domain.song.commands.AddInstrumental;
+
+public class AddInstrumentalUseCase extends UseCase<RequestCommand<AddInstrumental>, ResponseEvents> {
+    @Override
+    public void executeUseCase(RequestCommand<AddInstrumental> addInstrumentalRequestCommand) {
+        var command = addInstrumentalRequestCommand.getCommand();
+        var song = Song.from(command.getSongId(), retrieveEvents(command.getSongId().value()));
+        song.addInstrumental(command.getInstrumentalId(), command.getPercussionInstrument(), command.getMelodicInstrument(), command.getIsRecorded());
+        emit().onResponse(new ResponseEvents(song.getUncommittedChanges()));
+    }
+
+
 }

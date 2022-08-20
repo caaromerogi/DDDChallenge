@@ -28,13 +28,14 @@ class AddSingerUseCaseTest {
 
     @Test
     public void addSingerUseCaseTest(){
-        var command = new AddSinger(SongId.of(ROOT_ID), SingerId.of("121314"), new Name("Herrera"), new VocalRegister("Tenor"));
+        var command = new AddSinger(SongId.of(ROOT_ID), SingerId.of("121314"), new Name("Herrera"), new VocalRegister("Tenor"), new IsRecorded(true));
         var useCase = new AddSingerUseCase();
 
         Mockito.when(repository.getEventsBy(ROOT_ID)).thenReturn(List.of(
                 new SongCreated(
                         new Title("23"),
-                        new ReleaseDate("21/10/2022")
+                        new ReleaseDate("21/10/2022"),
+                        new IsRecorded(true)
                 )
         ));
 
