@@ -1,6 +1,10 @@
 package com.sofka.domain.song;
 
 import co.com.sofka.domain.generic.EventChange;
+import com.sofka.domain.song.commands.AddSinger;
+import com.sofka.domain.song.events.InstrumentalAdded;
+import com.sofka.domain.song.events.LyricsAdded;
+import com.sofka.domain.song.events.SingerAdded;
 import com.sofka.domain.song.events.SongCreated;
 
 public class SongChange extends EventChange {
@@ -8,7 +12,12 @@ public class SongChange extends EventChange {
         apply((SongCreated event) ->{
             song.releaseDate = event.getReleaseDate();
             song.title = event.getTitle();
-
         });
-    }
+
+        apply((SingerAdded event) -> song.singer = new Singer(event.getSingerId(), event.getName(),event.getVocalRegister()));
+
+        apply((InstrumentalAdded event) -> song.instrumental = new Instrumental(event.getInstrumentalId(), event.getPercussionInstrument(), event.getMelodicInstrumental()));
+
+        apply((LyricsAdded event) -> song.lyrics = new Lyrics(event.getLyricsId(), event.getChorus(), event.getVerse()));}
 }
+

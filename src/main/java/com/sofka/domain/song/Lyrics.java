@@ -11,8 +11,10 @@ public class Lyrics extends Entity<LyricsId> {
     private Chorus chorus;
     private Verse verse;
 
-    public Lyrics(LyricsId entityId) {
+    public Lyrics(LyricsId entityId, Chorus chorus, Verse verse) {
         super(entityId);
+        this.chorus = chorus;
+        this.verse = verse;
     }
 
     public void updateChorus(Chorus chorus){
