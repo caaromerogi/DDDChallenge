@@ -22,9 +22,10 @@ class ChangeSongIsRecordedBySingerUseCaseTest {
     @Mock
     private DomainEventRepository repository;
 
+    //Instrumental already recorded and new Singer Recorded Event changed to true - That means Song is recorded (Expected true)
     @Test
     public void changeSongIsRecordedBySingerUseCaseTest1(){
-        var event = new SingerIsRecordedChanged(SingerId.of("gduuisnvi3"), new IsRecorded(false));
+        var event = new SingerIsRecordedChanged(SingerId.of("gduuisnvi3"), new IsRecorded(true));
         var useCase = new ChangeSongIsRecordedBySingerUseCase();
         event.setAggregateRootId(ROOT_ID);
 
@@ -58,10 +59,141 @@ class ChangeSongIsRecordedBySingerUseCaseTest {
 
         SongIsRecordedChanged responseEvent = (SongIsRecordedChanged) events.get(0);
 
+        Assertions.assertEquals(responseEvent.getIsRecorded().value(), true);
+
+        Mockito.verify(repository).getEventsBy(ROOT_ID);
+
+    }
+
+    //Instrumental not recorded yet and new Singer Recorded Event changed to true - That means Song is NOT recorded (Expected false)
+    @Test
+    public void changeSongIsRecordedBySingerUseCaseTest2(){
+        var event = new SingerIsRecordedChanged(SingerId.of("gduuisnvi3"), new IsRecorded(true));
+        var useCase = new ChangeSongIsRecordedBySingerUseCase();
+        event.setAggregateRootId(ROOT_ID);
+
+        useCase.addRepository(repository);
+
+        Mockito.when(repository.getEventsBy(ROOT_ID)).thenReturn(List.of(
+                new SongCreated(
+                        new Title("La Plata"),
+                        new ReleaseDate("20/08/2022"),
+                        new IsRecorded(false)
+                ),
+                new InstrumentalAdded(
+                        InstrumentalId.of("asdssda12"),
+                        new PercussionInstrument("Drums"),
+                        new MelodicInstrument("Guitar"),
+                        new IsRecorded(false)
+                ),
+                new SingerAdded(
+                        SingerId.of("gfeve2"),
+                        new Name("Diomedes Diaz"),
+                        new VocalRegister("Tenor"),
+                        new IsRecorded(false)
+                )
+        ));
+
+        var events = UseCaseHandler.getInstance()
+                .setIdentifyExecutor(ROOT_ID)
+                .syncExecutor(useCase, new TriggeredEvent<>(event))
+                .orElseThrow()
+                .getDomainEvents();
+
+        SongIsRecordedChanged responseEvent = (SongIsRecordedChanged) events.get(0);
+
         Assertions.assertEquals(responseEvent.getIsRecorded().value(), false);
 
         Mockito.verify(repository).getEventsBy(ROOT_ID);
 
     }
+
+    //Instrumental not recorded yet and new Singer Recorded Event changed to false - That means Song is NOT recorded (Expected false)
+    @Test
+    public void changeSongIsRecordedBySingerUseCaseTest3(){
+        var event = new SingerIsRecordedChanged(SingerId.of("gduuisnvi3"), new IsRecorded(false));
+        var useCase = new ChangeSongIsRecordedBySingerUseCase();
+        event.setAggregateRootId(ROOT_ID);
+
+        useCase.addRepository(repository);
+
+        Mockito.when(repository.getEventsBy(ROOT_ID)).thenReturn(List.of(
+                new SongCreated(
+                        new Title("La Plata"),
+                        new ReleaseDate("20/08/2022"),
+                        new IsRecorded(false)
+                ),
+                new InstrumentalAdded(
+                        InstrumentalId.of("asdssda12"),
+                        new PercussionInstrument("Drums"),
+                        new MelodicInstrument("Guitar"),
+                        new IsRecorded(false)
+                ),
+                new SingerAdded(
+                        SingerId.of("gfeve2"),
+                        new Name("Diomedes Diaz"),
+                        new VocalRegister("Tenor"),
+                        new IsRecorded(true)
+                )
+        ));
+
+        var events = UseCaseHandler.getInstance()
+                .setIdentifyExecutor(ROOT_ID)
+                .syncExecutor(useCase, new TriggeredEvent<>(event))
+                .orElseThrow()
+                .getDomainEvents();
+
+        SongIsRecordedChanged responseEvent = (SongIsRecordedChanged) events.get(0);
+
+        Assertions.assertEquals(responseEvent.getIsRecorded().value(), false);
+
+        Mockito.verify(repository).getEventsBy(ROOT_ID);
+
+    }
+
+    //Instrumental recorded and new Singer Recorded Event changed to false - That means Song is NOT recorded (Expected false)
+    @Test
+    public void changeSongIsRecordedBySingerUseCaseTest4(){
+        var event = new SingerIsRecordedChanged(SingerId.of("gduuisnvi3"), new IsRecorded(false));
+        var useCase = new ChangeSongIsRecordedBySingerUseCase();
+        event.setAggregateRootId(ROOT_ID);
+
+        useCase.addRepository(repository);
+
+        Mockito.when(repository.getEventsBy(ROOT_ID)).thenReturn(List.of(
+                new SongCreated(
+                        new Title("La Plata"),
+                        new ReleaseDate("20/08/2022"),
+                        new IsRecorded(false)
+                ),
+                new InstrumentalAdded(
+                        InstrumentalId.of("asdssda12"),
+                        new PercussionInstrument("Drums"),
+                        new MelodicInstrument("Guitar"),
+                        new IsRecorded(true)
+                ),
+                new SingerAdded(
+                        SingerId.of("gfeve2"),
+                        new Name("Diomedes Diaz"),
+                        new VocalRegister("Tenor"),
+                        new IsRecorded(true)
+                )
+        ));
+
+        var events = UseCaseHandler.getInstance()
+                .setIdentifyExecutor(ROOT_ID)
+                .syncExecutor(useCase, new TriggeredEvent<>(event))
+                .orElseThrow()
+                .getDomainEvents();
+
+        SongIsRecordedChanged responseEvent = (SongIsRecordedChanged) events.get(0);
+
+        Assertions.assertEquals(responseEvent.getIsRecorded().value(), false);
+
+        Mockito.verify(repository).getEventsBy(ROOT_ID);
+
+    }
+
+
 
 }

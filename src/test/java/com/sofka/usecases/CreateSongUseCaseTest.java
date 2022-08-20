@@ -31,7 +31,6 @@ class CreateSongUseCaseTest {
 
         Assertions.assertEquals(command.getReleaseDate().value(), event.getReleaseDate().value());
         Assertions.assertEquals(command.getTitle().value(), event.getTitle().value());
-        Assertions.assertEquals(command.getIsRecorded().value(), event.getIsRecorded().value());
 
     }
 }

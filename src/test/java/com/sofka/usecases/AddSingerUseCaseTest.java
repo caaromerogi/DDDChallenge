@@ -49,6 +49,7 @@ class AddSingerUseCaseTest {
 
         var event = (SingerAdded)events.get(0);
         Assertions.assertEquals(command.getName().value(),event.getName().value());
+        Assertions.assertEquals(command.getVocalRegister().value(), event.getVocalRegister().value());
         Mockito.verify(repository).getEventsBy(ROOT_ID);
 
     }
