@@ -1,7 +1,6 @@
 package com.sofka.domain.song;
 
 import co.com.sofka.domain.generic.EventChange;
-import com.sofka.domain.song.commands.AddSinger;
 import com.sofka.domain.song.events.InstrumentalAdded;
 import com.sofka.domain.song.events.LyricsAdded;
 import com.sofka.domain.song.events.SingerAdded;

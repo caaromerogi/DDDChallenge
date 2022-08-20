@@ -6,16 +6,11 @@ import com.sofka.domain.song.values.SongId;
 
 public class CreateProduction extends Command {
     private final ProductionId productionId;
-
     private final SongId songId;
 
-    public CreateProduction(ProductionId productionId, SongId songId) {
-        this.productionId = productionId;
+    public CreateProduction(SongId songId) {
+        this.productionId = new ProductionId();
         this.songId = songId;
-    }
-
-    public ProductionId getProductionId() {
-        return productionId;
     }
 
     public SongId getSongId() {

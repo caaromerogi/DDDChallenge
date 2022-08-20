@@ -10,8 +10,8 @@ public class CreateSong extends Command {
     private final Title title;
     private final ReleaseDate releaseDate;
 
-    public CreateSong(SongId songId, Title title, ReleaseDate releaseDate) {
-        this.songId = songId;
+    public CreateSong(Title title, ReleaseDate releaseDate) {
+        this.songId = new SongId();
         this.title = title;
         this.releaseDate = releaseDate;
     }
