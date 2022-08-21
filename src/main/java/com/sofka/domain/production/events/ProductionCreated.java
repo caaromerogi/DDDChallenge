@@ -19,4 +19,8 @@ public class ProductionCreated extends DomainEvent {
     public SongId getSongId() {
         return songId;
     }
+
+    public IsFinished getIsFinished() {
+        return isFinished;
+    }
 }
