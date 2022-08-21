@@ -105,12 +105,12 @@ public class Song extends AggregateEvent<SongId> {
         appendChange(new LyricsVerseUpdated(lyricsId, verse)).apply();
     }
 
-    public void changeInstrumentalIsRecorded(InstrumentalId instrumentalId, IsRecorded isRecorded){
+    public void recordInstrumental(InstrumentalId instrumentalId, IsRecorded isRecorded){
         Objects.requireNonNull(instrumentalId);
         Objects.requireNonNull(isRecorded);
         appendChange((new InstrumentalRecorded(instrumentalId, isRecorded)));
     }
-    public void changeSingerIsRecorded(SingerId singerId, IsRecorded isRecorded){
+    public void recordSinger(SingerId singerId, IsRecorded isRecorded){
         Objects.requireNonNull(singerId);
         Objects.requireNonNull(isRecorded);
         appendChange(new SingerRecorded(singerId, isRecorded));

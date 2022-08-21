@@ -26,7 +26,7 @@ class RecordSongBySingerUseCaseTest {
     @Test
     public void changeSongIsRecordedBySingerUseCaseTest1(){
         var event = new SingerRecorded(SingerId.of("gduuisnvi3"), new IsRecorded(true));
-        var useCase = new ChangeSongIsRecordedBySingerUseCase();
+        var useCase = new RecordSongBySingerUseCase();
         event.setAggregateRootId(ROOT_ID);
 
         useCase.addRepository(repository);
@@ -69,7 +69,7 @@ class RecordSongBySingerUseCaseTest {
     @Test
     public void changeSongIsRecordedBySingerUseCaseTest2(){
         var event = new SingerRecorded(SingerId.of("gduuisnvi3"), new IsRecorded(true));
-        var useCase = new ChangeSongIsRecordedBySingerUseCase();
+        var useCase = new RecordSongBySingerUseCase();
         event.setAggregateRootId(ROOT_ID);
 
         useCase.addRepository(repository);
@@ -112,7 +112,7 @@ class RecordSongBySingerUseCaseTest {
     @Test
     public void changeSongIsRecordedBySingerUseCaseTest3(){
         var event = new SingerRecorded(SingerId.of("gduuisnvi3"), new IsRecorded(false));
-        var useCase = new ChangeSongIsRecordedBySingerUseCase();
+        var useCase = new RecordSongBySingerUseCase();
         event.setAggregateRootId(ROOT_ID);
 
         useCase.addRepository(repository);
@@ -155,7 +155,7 @@ class RecordSongBySingerUseCaseTest {
     @Test
     public void changeSongIsRecordedBySingerUseCaseTest4(){
         var event = new SingerRecorded(SingerId.of("gduuisnvi3"), new IsRecorded(false));
-        var useCase = new ChangeSongIsRecordedBySingerUseCase();
+        var useCase = new RecordSongBySingerUseCase();
         event.setAggregateRootId(ROOT_ID);
 
         useCase.addRepository(repository);

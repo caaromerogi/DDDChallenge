@@ -14,6 +14,5 @@ public class ChangeMelodicInstrumentUseCase extends UseCase<RequestCommand<Chang
         var song = Song.from(command.getSongId(), retrieveEvents(command.getSongId().value()));
         song.changeMelodicInstrument(command.getInstrumentalId(), command.getMelodicInstrument());
         emit().onResponse(new ResponseEvents(song.getUncommittedChanges()));
-
     }
 }

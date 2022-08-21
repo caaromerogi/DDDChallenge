@@ -18,17 +18,17 @@ public class ProductionChange extends EventChange {
 
         apply((ProductionFinished event) -> production.isFinished = event.getIsFinished());
 
-        apply((RecorderVolumeAdjusted event) -> production.adjustRecorderVolume(event.getRecorderId(), event.getVolume()));
+        apply((RecorderVolumeAdjusted event) -> production.recorder.adjustVolume(event.getVolume()));
 
-        apply((RecorderBrandChanged event) -> production.changeRecorderBrand(event.getRecorderId(), event.getBrand()));
+        apply((RecorderBrandChanged event) -> production.recorder.changeBrand(event.getBrand()));
 
-        apply((CompressorChanged event) -> production.changeCompressor(event.getMasterizerId(), event.getCompressor()));
+        apply((CompressorChanged event) -> production.masterizer.changeCompressor(event.getCompressor()));
 
-        apply((EqualizerChanged event) -> production.changeEqualizer(event.getMasterizerId(), event.getEqualizer()));
+        apply((EqualizerChanged event) -> production.masterizer.changeEqualizer(event.getEqualizer()));
 
-        apply((ProducerSignChanged event) -> production.changeProducerSign(event.getProducerId(), event.getSign()));
+        apply((ProducerSignChanged event) -> production.producer.changeSign(event.getSign()));
 
-        apply((ProducerNameUpdated event) -> production.updateProducerName(event.getProducerId(), event.getName()));
+        apply((ProducerNameUpdated event) -> production.producer.updateName(event.getName()));
 
     }
 

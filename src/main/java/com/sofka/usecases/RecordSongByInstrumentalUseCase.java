@@ -8,7 +8,7 @@ import com.sofka.domain.song.events.InstrumentalRecorded;
 import com.sofka.domain.song.values.IsRecorded;
 import com.sofka.domain.song.values.SongId;
 
-public class ChangeSongIsRecordedByInstrumentalUseCase extends UseCase<TriggeredEvent<InstrumentalRecorded>, ResponseEvents> {
+public class RecordSongByInstrumentalUseCase extends UseCase<TriggeredEvent<InstrumentalRecorded>, ResponseEvents> {
     @Override
     public void executeUseCase(TriggeredEvent<InstrumentalRecorded> instrumentalIsRecordedChanged) {
         InstrumentalRecorded event = instrumentalIsRecordedChanged.getDomainEvent();

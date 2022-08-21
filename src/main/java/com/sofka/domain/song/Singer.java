@@ -30,7 +30,7 @@ public class Singer extends Entity<SingerId> {
         this.vocalRegister = Objects.requireNonNull(vocalRegister);
     }
 
-    public void changeIsRecorded(IsRecorded isRecorded){
+    public void recordSinger(IsRecorded isRecorded){
         this.isRecorded = Objects.requireNonNull(isRecorded);
     }
 

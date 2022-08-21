@@ -34,7 +34,7 @@ public class Instrumental extends Entity<InstrumentalId> {
         this.melodicInstrument = Objects.requireNonNull(melodicInstrument);
     }
 
-    public void changeIsRecorded(IsRecorded isRecorded){
+    public void recordInstrumental(IsRecorded isRecorded){
         this.isRecorded = Objects.requireNonNull(isRecorded);
     }
 

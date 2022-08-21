@@ -26,7 +26,7 @@ class RecordSongByInstrumentalUseCaseTest {
     @Test
     void changeSongIsRecordedUseCaseTest1() {
         var event = new InstrumentalRecorded(InstrumentalId.of("asdssda12"), new IsRecorded(true));
-        var useCase = new ChangeSongIsRecordedByInstrumentalUseCase();
+        var useCase = new RecordSongByInstrumentalUseCase();
         event.setAggregateRootId(ROOT_ID);
 
         useCase.addRepository(repository);
@@ -69,7 +69,7 @@ class RecordSongByInstrumentalUseCaseTest {
     @Test
     void changeSongIsRecordedUseCaseTest2() {
         var event = new InstrumentalRecorded(InstrumentalId.of("asdssda12"), new IsRecorded(false));
-        var useCase = new ChangeSongIsRecordedByInstrumentalUseCase();
+        var useCase = new RecordSongByInstrumentalUseCase();
         event.setAggregateRootId(ROOT_ID);
 
         useCase.addRepository(repository);
@@ -113,7 +113,7 @@ class RecordSongByInstrumentalUseCaseTest {
     @Test
     void changeSongIsRecordedUseCaseTest3(){
         var event = new InstrumentalRecorded(InstrumentalId.of("asdssda12"), new IsRecorded(true));
-        var useCase = new ChangeSongIsRecordedByInstrumentalUseCase();
+        var useCase = new RecordSongByInstrumentalUseCase();
         event.setAggregateRootId(ROOT_ID);
 
         useCase.addRepository(repository);
@@ -156,7 +156,7 @@ class RecordSongByInstrumentalUseCaseTest {
     @Test
     void changeSongIsRecordedUseCaseTest4(){
         var event = new InstrumentalRecorded(InstrumentalId.of("asdssda12"), new IsRecorded(false));
-        var useCase = new ChangeSongIsRecordedByInstrumentalUseCase();
+        var useCase = new RecordSongByInstrumentalUseCase();
         event.setAggregateRootId(ROOT_ID);
 
         useCase.addRepository(repository);
