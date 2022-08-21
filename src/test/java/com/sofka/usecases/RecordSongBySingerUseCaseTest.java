@@ -33,7 +33,7 @@ class RecordSongBySingerUseCaseTest {
 
         Mockito.when(repository.getEventsBy(ROOT_ID)).thenReturn(List.of(
                 new SongCreated(
-                        new Title("La Plata"),
+                        new Title("Monastery"),
                         new ReleaseDate("20/08/2022"),
                         new IsRecorded(false)
                 ),
@@ -45,7 +45,7 @@ class RecordSongBySingerUseCaseTest {
                 ),
                 new SingerAdded(
                         SingerId.of("gfeve2"),
-                        new Name("Diomedes Diaz"),
+                        new Name("Ferxxo"),
                         new VocalRegister("Tenor"),
                         new IsRecorded(false)
                 )

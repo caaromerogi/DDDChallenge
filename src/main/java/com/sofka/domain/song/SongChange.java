@@ -19,6 +19,10 @@ public class SongChange extends EventChange {
 
         apply((SongRecorded event) -> song.changeIsRecorded(event.getIsRecorded()));
 
+        apply((TitleChanged event) -> song.changeTitle(event.getTitle()));
+
+        apply((ReleaseDateChanged event) -> song.changeReleaseDate(event.getReleaseDate()));
+
         apply((InstrumentalRecorded event) -> song.instrumental.recordInstrumental(event.getIsRecorded()));
 
         apply((PercussionInstrumentChanged event) -> song.instrumental.changePercussionInstrument(event.getPercussionInstrument()));
@@ -31,9 +35,9 @@ public class SongChange extends EventChange {
 
         apply((VocalRegisterUpdated event) -> song.singer.updateVocalRegister(event.getVocalRegister()));
 
-        apply((TitleChanged event) -> song.changeTitle(event.getTitle()));
+        apply((LyricsChorusUpdated event) -> song.lyrics.updateChorus(event.getChorus()));
 
-        apply((ReleaseDateChanged event) -> song.changeReleaseDate(event.getReleaseDate()));
+        apply((LyricsVerseUpdated event) ->song.lyrics.updateVerse(event.getVerse()));
     }
 
 
