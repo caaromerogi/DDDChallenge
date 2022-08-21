@@ -4,6 +4,7 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
 import com.sofka.domain.production.commands.CreateProduction;
 import com.sofka.domain.production.events.ProductionCreated;
+import com.sofka.domain.production.values.IsFinished;
 import com.sofka.domain.song.values.SongId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ class CreateProductionUseCaseTest {
     @Test
     public void createProductionUseCaseTest(){
 
-        CreateProduction command = new CreateProduction(new SongId());
+        CreateProduction command = new CreateProduction(new SongId(), new IsFinished(false));
         CreateProductionUseCase useCase = new CreateProductionUseCase();
 
         var events = UseCaseHandler

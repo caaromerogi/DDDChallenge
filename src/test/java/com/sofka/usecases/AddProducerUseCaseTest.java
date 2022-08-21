@@ -7,6 +7,7 @@ import com.sofka.domain.generics.Name;
 import com.sofka.domain.production.commands.AddProducer;
 import com.sofka.domain.production.events.ProducerAdded;
 import com.sofka.domain.production.events.ProductionCreated;
+import com.sofka.domain.production.values.IsFinished;
 import com.sofka.domain.production.values.ProducerId;
 import com.sofka.domain.production.values.ProductionId;
 import com.sofka.domain.production.values.Sign;
@@ -33,7 +34,7 @@ class AddProducerUseCaseTest {
         var command = new AddProducer(ProductionId.of(ROOT_ID), ProducerId.of("3214124f"), new Name("Tiny"), new Sign("Hear this music"));
         var useCase = new AddProducerUseCase();
         Mockito.when(repository.getEventsBy(ROOT_ID)).thenReturn(List.of(
-                new ProductionCreated(new SongId())
+                new ProductionCreated(new SongId(), new IsFinished(false))
         ));
 
         useCase.addRepository(repository);

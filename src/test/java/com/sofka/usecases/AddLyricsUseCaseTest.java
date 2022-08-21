@@ -32,7 +32,7 @@ class AddLyricsUseCaseTest {
         Mockito.when(repository.getEventsBy(ROOT_ID)).thenReturn(List.of(
                 new SongCreated(
                         new Title("Disturbed"),
-                        new ReleaseDate("03/01/2002"),
+                        new ReleaseDate("03/01/2025"),
                         new IsRecorded(true)
                 )
         ));

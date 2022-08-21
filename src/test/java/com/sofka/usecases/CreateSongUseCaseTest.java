@@ -18,7 +18,7 @@ class CreateSongUseCaseTest {
 
     @Test
     public void createSongUseCaseTest(){
-        CreateSong command = new CreateSong(new Title("Break up"), new ReleaseDate("19/10/2019"), new IsRecorded(true));
+        CreateSong command = new CreateSong(new Title("Break up"), new ReleaseDate("19/10/2024"), new IsRecorded(false));
         CreateSongUseCase useCase = new CreateSongUseCase();
 
         var events = UseCaseHandler

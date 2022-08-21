@@ -1,24 +1,17 @@
-package com.sofka.domain.song.commands;
+package com.sofka.domain.song.events;
 
-import co.com.sofka.domain.generic.Command;
+import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.domain.song.values.InstrumentalId;
 import com.sofka.domain.song.values.IsRecorded;
-import com.sofka.domain.song.values.SongId;
 
-public class ChangeInstrumentalIsRecorded extends Command {
-    private final SongId songId;
+public class InstrumentalRecorded extends DomainEvent {
     private final InstrumentalId instrumentalId;
     private final IsRecorded isRecorded;
 
-
-    public ChangeInstrumentalIsRecorded(SongId songId, InstrumentalId instrumentalId, IsRecorded isRecorded) {
-        this.songId = songId;
+    public InstrumentalRecorded(InstrumentalId instrumentalId, IsRecorded isRecorded) {
+        super("com.sofka.dddchallenge.Song.InstrumentalIsRecordedChanged");
         this.instrumentalId = instrumentalId;
         this.isRecorded = isRecorded;
-    }
-
-    public SongId getSongId() {
-        return songId;
     }
 
     public InstrumentalId getInstrumentalId() {

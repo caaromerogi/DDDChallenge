@@ -26,14 +26,14 @@ class AddInstrumentalUseCaseTest {
 
     @Test
     public void addInstrumentalUseCaseTest() {
-        var command = new AddInstrumental(SongId.of(ROOT_ID), InstrumentalId.of("58689vfub"), new PercussionInstrument("Congo"), new MelodicInstrument("Guitar"), new IsRecorded(true));
+        var command = new AddInstrumental(SongId.of(ROOT_ID), InstrumentalId.of("58689vfub"), new PercussionInstrument("Congo"), new MelodicInstrument("Guitar"), new IsRecorded(false));
         var useCase = new AddInstrumentalUseCase();
 
         Mockito.when(repository.getEventsBy(ROOT_ID)).thenReturn(List.of(
                 new SongCreated(
                         new Title("Lonely"),
-                        new ReleaseDate("04/02/1999"),
-                        new IsRecorded(true)
+                        new ReleaseDate("04/02/2050"),
+                        new IsRecorded(false)
                 )
         ));
         useCase.addRepository(repository);

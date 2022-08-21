@@ -13,7 +13,7 @@ public class ChangeRecorderBrand extends Command {
 
     public ChangeRecorderBrand(ProductionId productionId, com.sofka.domain.production.values.RecorderId recorderId, Brand brand) {
         this.productionId = productionId;
-        RecorderId = recorderId;
+        this.RecorderId = recorderId;
         this.brand = brand;
     }
 

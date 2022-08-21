@@ -17,6 +17,14 @@ public class SongChange extends EventChange {
 
         apply((InstrumentalAdded event) -> song.instrumental = new Instrumental(event.getInstrumentalId(), event.getPercussionInstrument(), event.getMelodicInstrumental(), event.getIsRecorded()));
 
-        apply((LyricsAdded event) -> song.lyrics = new Lyrics(event.getLyricsId(), event.getChorus(), event.getVerse()));}
+        apply((LyricsAdded event) -> song.lyrics = new Lyrics(event.getLyricsId(), event.getChorus(), event.getVerse()));
+
+
+
+
+
+    }
+
+
 }
 

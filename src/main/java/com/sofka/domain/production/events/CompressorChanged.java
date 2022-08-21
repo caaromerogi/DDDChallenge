@@ -14,4 +14,12 @@ public class CompressorChanged extends DomainEvent {
         this.masterizerId = masterizerId;
         this.compressor = compressor;
     }
+
+    public MasterizerId getMasterizerId() {
+        return masterizerId;
+    }
+
+    public Compressor getCompressor() {
+        return compressor;
+    }
 }

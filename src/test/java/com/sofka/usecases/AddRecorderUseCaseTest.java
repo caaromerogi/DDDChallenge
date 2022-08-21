@@ -7,10 +7,7 @@ import com.sofka.domain.production.Production;
 import com.sofka.domain.production.commands.AddRecorder;
 import com.sofka.domain.production.events.ProductionCreated;
 import com.sofka.domain.production.events.RecorderAdded;
-import com.sofka.domain.production.values.Brand;
-import com.sofka.domain.production.values.ProductionId;
-import com.sofka.domain.production.values.RecorderId;
-import com.sofka.domain.production.values.Volume;
+import com.sofka.domain.production.values.*;
 import com.sofka.domain.song.values.SongId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -34,7 +31,7 @@ class AddRecorderUseCaseTest {
         var useCase = new AddRecorderUseCase();
 
         Mockito.when(repository.getEventsBy(ROOT_ID)).thenReturn(List.of(
-                new ProductionCreated(new SongId())
+                new ProductionCreated(new SongId(), new IsFinished(false))
         ));
         useCase.addRepository(repository);
 

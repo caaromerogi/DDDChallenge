@@ -19,10 +19,12 @@ public class Production extends AggregateEvent<ProductionId> {
     protected Recorder recorder;
     protected Producer producer;
 
-    public Production(ProductionId entityId, SongId songId) {
+    protected IsFinished isFinished;
+
+    public Production(ProductionId entityId, SongId songId, IsFinished isFinished) {
         super(entityId);
         //Agregar más value objects
-        appendChange(new ProductionCreated(songId)).apply();
+        appendChange(new ProductionCreated(songId, isFinished)).apply();
     }
 
     private Production(ProductionId productionId) {
@@ -93,6 +95,11 @@ public class Production extends AggregateEvent<ProductionId> {
         appendChange(new CompressorChanged(masterizerId, compressor));
     }
 
+    public void finishProduction(IsFinished isFinished){
+        Objects.requireNonNull(isFinished);
+        appendChange(new ProductionFinished(isFinished));
+    }
+
     public SongId songId() {
         return songId;
     }
@@ -103,6 +110,10 @@ public class Production extends AggregateEvent<ProductionId> {
 
     public Recorder recorder() {
         return recorder;
+    }
+
+    public IsFinished isFinished(){
+        return isFinished;
     }
 
     public Producer producer() {

@@ -4,12 +4,12 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.domain.song.values.IsRecorded;
 import com.sofka.domain.song.values.SingerId;
 
-public class SingerIsRecordedChanged extends DomainEvent {
+public class SingerRecorded extends DomainEvent {
     private final SingerId singerId;
     private final IsRecorded isRecorded;
 
 
-    public SingerIsRecordedChanged(SingerId singerId,IsRecorded isRecorded) {
+    public SingerRecorded(SingerId singerId, IsRecorded isRecorded) {
         super("com.sofka.dddchallenge.Song.SingerIsRecordedChanged");
         this.isRecorded = isRecorded;
         this.singerId = singerId;

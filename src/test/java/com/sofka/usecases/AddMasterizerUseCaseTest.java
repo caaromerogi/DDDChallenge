@@ -6,10 +6,7 @@ import co.com.sofka.business.support.RequestCommand;
 import com.sofka.domain.production.commands.AddMasterizer;
 import com.sofka.domain.production.events.MasterizerAdded;
 import com.sofka.domain.production.events.ProductionCreated;
-import com.sofka.domain.production.values.Compressor;
-import com.sofka.domain.production.values.Equalizer;
-import com.sofka.domain.production.values.MasterizerId;
-import com.sofka.domain.production.values.ProductionId;
+import com.sofka.domain.production.values.*;
 import com.sofka.domain.song.values.SongId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -34,7 +31,7 @@ class AddMasterizerUseCaseTest {
         var useCase = new AddMasterizerUseCase();
 
         Mockito.when(repository.getEventsBy(ROOT_ID)).thenReturn(List.of(
-                new ProductionCreated(new SongId())
+                new ProductionCreated(new SongId(), new IsFinished(false))
         ));
         useCase.addRepository(repository);
         var events = UseCaseHandler

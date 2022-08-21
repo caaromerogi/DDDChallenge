@@ -10,7 +10,9 @@ public class CreateProductionUseCase extends UseCase<RequestCommand<CreateProduc
     @Override
     public void executeUseCase(RequestCommand<CreateProduction> createProductionRequestCommand) {
         CreateProduction createProduction = createProductionRequestCommand.getCommand();
-        Production production = new Production(createProduction.getProductionId(),createProduction.getSongId());
+        Production production = new Production(createProduction.getProductionId(),
+                createProduction.getSongId(),
+                createProduction.getIsFinished());
         emit().onResponse(new ResponseEvents(production.getUncommittedChanges()));
     }
 }

@@ -5,13 +5,13 @@ import com.sofka.domain.song.values.IsRecorded;
 import com.sofka.domain.song.values.SingerId;
 import com.sofka.domain.song.values.SongId;
 
-public class ChangeSingerIsRecorded extends Command {
+public class RecordSinger extends Command {
     private final SongId songId;
     private final SingerId singerId;
     private final IsRecorded isRecorded;
 
 
-    public ChangeSingerIsRecorded(SongId songId, SingerId singerId, IsRecorded isRecorded) {
+    public RecordSinger(SongId songId, SingerId singerId, IsRecorded isRecorded) {
         this.songId = songId;
         this.singerId = singerId;
         this.isRecorded = isRecorded;

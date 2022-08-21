@@ -4,14 +4,14 @@ import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.business.support.TriggeredEvent;
 import com.sofka.domain.song.Song;
-import com.sofka.domain.song.events.SingerIsRecordedChanged;
+import com.sofka.domain.song.events.SingerRecorded;
 import com.sofka.domain.song.values.IsRecorded;
 import com.sofka.domain.song.values.SongId;
 
-public class ChangeSongIsRecordedBySingerUseCase extends UseCase<TriggeredEvent<SingerIsRecordedChanged>, ResponseEvents> {
+public class ChangeSongIsRecordedBySingerUseCase extends UseCase<TriggeredEvent<SingerRecorded>, ResponseEvents> {
     @Override
-    public void executeUseCase(TriggeredEvent<SingerIsRecordedChanged> singerIsRecordedChangedTriggeredEvent) {
-        SingerIsRecordedChanged event = singerIsRecordedChangedTriggeredEvent.getDomainEvent();
+    public void executeUseCase(TriggeredEvent<SingerRecorded> singerIsRecordedChangedTriggeredEvent) {
+        SingerRecorded event = singerIsRecordedChangedTriggeredEvent.getDomainEvent();
         Song song = Song.from(SongId.of(event.aggregateRootId()),this.retrieveEvents());
         if(event.getIsRecorded().value()&&song.instrumental().isRecorded().value()){
             song.changeIsRecorded(new IsRecorded(true));
